@@ -41,28 +41,26 @@ export default class ConversationsWrapper extends TrackerReact(React.Component) 
 
   twilioQuickstart() {
     // generate an AccessToken in the Twilio Account Portal - https://www.twilio.com/user/account/video/testing-tools
-    var accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzM5MzNiOTViZDcwMGU3MzRmOTczZTcwZmU4MmQ2MGM1LTE0NTg5OTExNTUiLCJpc3MiOiJTSzM5MzNiOTViZDcwMGU3MzRmOTczZTcwZmU4MmQ2MGM1Iiwic3ViIjoiQUMzZjVmYTI4YTlhNjE4NzcwNWYzNGU1MTYyNjg3M2RhMyIsImV4cCI6MTQ1ODk5NDc1NSwiZ3JhbnRzIjp7ImlkZW50aXR5IjoicXVpY2tzdGFydCIsInJ0YyI6eyJjb25maWd1cmF0aW9uX3Byb2ZpbGVfc2lkIjoiVlNkY2M3NzA0MTMyMzM0MzhiNzUzYjc5OGUwYzE5OGI0MyJ9fX0.sZbAXufhU__oUH2m0o0qnIs453thphSLo45p5Q_Ck80";
-
-    // use our AccessToken to generate an AccessManager object
+    var accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzM5MzNiOTViZDcwMGU3MzRmOTczZTcwZmU4MmQ2MGM1LTE0NTk3MzU3NjkiLCJpc3MiOiJTSzM5MzNiOTViZDcwMGU3MzRmOTczZTcwZmU4MmQ2MGM1Iiwic3ViIjoiQUMzZjVmYTI4YTlhNjE4NzcwNWYzNGU1MTYyNjg3M2RhMyIsImV4cCI6MTQ1OTczOTM2OSwiZ3JhbnRzIjp7ImlkZW50aXR5IjoicXVpY2tzdGFydCIsInJ0YyI6eyJjb25maWd1cmF0aW9uX3Byb2ZpbGVfc2lkIjoiVlNkY2M3NzA0MTMyMzM0MzhiNzUzYjc5OGUwYzE5OGI0MyJ9fX0.is5p2tDEoC14RQM4PqhGQRkV4hgUvWwenz8e2ydhvMc";    // use our AccessToken to generate an AccessManager object
     var accessManager = new Twilio.AccessManager(accessToken);
 
     // create a Conversations Client and connect to Twilio
     conversationsClient = new Twilio.Conversations.Client(accessManager);
     conversationsClient.listen().then(
-      clientConnected,
+      this.clientConnected(),
       function (error) {
-        log('Could not connect to Twilio: ' + error.message);
+        console.log('Could not connect to Twilio: ' + error.message);
       }
     );
   }
 
   clientConnected() {
     document.getElementById('invite-controls').style.display = 'block';
-    log("Connected to Twilio. Listening for incoming Invites as '" + conversationsClient.identity + "'");
+    this.log("Connected to Twilio. Listening for incoming Invites as '" + conversationsClient.identity + "'");
 
     conversationsClient.on('invite', function (invite) {
-      log('Incoming invite from: ' + invite.from);
-      invite.accept().then(conversationStarted);
+      console.log('Incoming invite from: ' + invite.from);
+      invite.accept().then(this.conversationStarted);
     });
 
     // bind button to create conversation
@@ -79,9 +77,9 @@ export default class ConversationsWrapper extends TrackerReact(React.Component) 
           options.localMedia = previewMedia;
         }
         conversationsClient.inviteToConversation(inviteTo, options).then(
-          conversationStarted,
+          this.conversationStarted,
           function (error) {
-            log('Unable to create conversation');
+            console.log('Unable to create conversation');
             console.error('Unable to create conversation', error);
           }
         );
@@ -126,7 +124,8 @@ export default class ConversationsWrapper extends TrackerReact(React.Component) 
           <div id="preview">
             <p className="instructions">Lookin good!</p>
             <div id="local-media"></div>
-            <button id="button-preview" onClick={this.videoPreview}>Preview My Camera</button>
+            <button id="button-preview" onClick={this.videoPreview.bind(this)}>Preview My Camera</button>
+            <button id="twilio-connect" onClick={this.twilioQuickstart.bind(this)}>Twilio Connect</button>
           </div>
           <div id="invite-controls">
             <p className="instructions">Invite another Client</p>
