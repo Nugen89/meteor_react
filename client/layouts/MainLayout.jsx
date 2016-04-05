@@ -1,22 +1,14 @@
 import React from 'react';
+import HeaderComponent from './HeaderComponent.jsx';
+import FooterComponent from './FooterComponent.jsx';
 import AccountsUI from '../AccountsUI.jsx';
-// import styles from '../../node_modules/material-design-lite/material.min.css';
 
 export const MainLayout = ({content}) => (
-  <div className="main-layout">
-    <header>
-      <h2>My Resolutions</h2>
-      <nav>
-        <a href="/">Resolutions</a>
-        <a href="/about">About</a>
-        <AccountsUI />
-      </nav>
-    </header>
-    <main>
+  <div className="wrapper">
+    <HeaderComponent />
+    <main className="ui container">
       {content}
     </main>
-
-    <script src="../../node_modules/material-design-lite/material.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <FooterComponent />
   </div>
 )

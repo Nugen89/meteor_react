@@ -2,15 +2,17 @@ import React from 'react';
 import {mount} from 'react-mounter';
 
 import {MainLayout} from './layouts/MainLayout.jsx';
-import ResolutionsWrapper from './resolutions/ResolutionsWrapper.jsx';
-import ResolutionDetail from './resolutions/ResolutionDetail.jsx';
+import ConversationsWrapper from './components/conversations/ConversationsWrapper.jsx';
+import ResolutionsWrapper   from './components/resolutions/ResolutionsWrapper.jsx';
+import ResolutionDetail     from './components/resolutions/ResolutionDetail.jsx';
 
-import About from './About.jsx';
+import Home   from './pages/Home.jsx';
+import About  from './pages/About.jsx';
 
 FlowRouter.route('/', {
   action() {
     mount(MainLayout, {
-      content: (<ResolutionsWrapper />)
+      content: (<Home />)
     })
   }
 });
@@ -19,6 +21,14 @@ FlowRouter.route('/about', {
   action() {
     mount(MainLayout, {
       content: (<About />)
+    })
+  }
+});
+
+FlowRouter.route('/videoChat', {
+  action() {
+    mount(MainLayout, {
+      content: (<ConversationsWrapper />)
     })
   }
 });

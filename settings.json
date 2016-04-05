@@ -1,6 +1,10 @@
 {
   "public": {
-    "test": "Hello World"
+    "test": "Hello World",
+    "twilio-account-sid": "AC3f5fa28a9a6187705f34e51626873da3",
+    "twilio-api-sid": "SK85c35e11e27bad6a3e8b6de965fd87b4",
+    "twilio-api-key-secret": "uLmSJrt7sO73DMo3ewuMObJcCOd7vz2c",
+    "twilio-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzM5MzNiOTViZDcwMGU3MzRmOTczZTcwZmU4MmQ2MGM1LTE0NTk4NTUxMTYiLCJpc3MiOiJTSzM5MzNiOTViZDcwMGU3MzRmOTczZTcwZmU4MmQ2MGM1Iiwic3ViIjoiQUMzZjVmYTI4YTlhNjE4NzcwNWYzNGU1MTYyNjg3M2RhMyIsImV4cCI6MTQ1OTg1ODcxNiwiZ3JhbnRzIjp7ImlkZW50aXR5IjoiTnVnZW4iLCJydGMiOnsiY29uZmlndXJhdGlvbl9wcm9maWxlX3NpZCI6IlZTZGNjNzcwNDEzMjMzNDM4Yjc1M2I3OThlMGMxOThiNDMifX19.Q5SZABmcDHzkazX-q5DvMegJe8mLOV-gd05_-BWjwzk"
   },
   "private": {
     "ptest": "Hello Private"

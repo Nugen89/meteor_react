@@ -67,16 +67,21 @@ social = {
 $side-nav = 100px
 $side-nav-large = 200px
 
-html
-    box-sizing: border-box
+// html
+//     box-sizing: border-box
 
-*, *:before, *:after
-    box-sizing: inherit
+// *, *:before, *:after
+//     box-sizing: inherit
 
 body
-    background light-grey
-    padding: 70px 0 150px
+    // background light-grey
     font-family: 'Open Sans', sans-serif
+    
+div.top.header.menu
+    margin-bottom 20px
+    
+div.bottom.footer.vertical
+    margin-top 20px
 
 // header
 //     color #FFF 
@@ -108,9 +113,6 @@ body
 //             &:hover
 //                 border-color teal 
 
-
-// p
-//     color #333 
 
 .page-title
     text-transform uppercase
@@ -372,5 +374,16 @@ body
 .route-appear
     opacity: 0
     animation: slideUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+    
+
+#local-media video
+    width 100%
+//     background #DDDDDD
+//     min-height 300px
+//     min-width 300px
+
+.button a
+    color: #FFFFFF
+
     
     
